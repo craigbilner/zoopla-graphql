@@ -9,6 +9,7 @@ const rootType = new GraphQLObjectType({
     test: {
       type: GraphQLString,
       description: 'test description',
+      resolve: () => 'success !',
     },
   }),
 });
