@@ -1,17 +1,20 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./src/schema/schema');
+const exphbs  = require('express-handlebars');
 const app = express();
 
-app.all('/graphql', (req, res) => res.redirect('/'));
+app.engine('handlebars', exphbs());
+app.set('view engine', 'handlebars');
+app.use(express.static('dist'));
 
-app.use('/', graphqlHTTP(() => ({
+app.use('/graphql', graphqlHTTP(() => ({
   schema,
   graphiql: true,
 })));
 
-app.use('/test', (req, res) => {
-
+app.use('/', (req, res) => {
+  res.render('index');
 });
 
 app.listen(8080, () => {

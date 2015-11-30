@@ -4,7 +4,7 @@
   "description": "A GraphQL layer over the top of the zoopla API",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js",
+    "start": "node server.js",
     "lint": "eslint ./index.js ./server.js ./src",
     "build": "webpack"
   },
@@ -27,6 +27,7 @@
   "dependencies": {
     "express": "^4.13.3",
     "express-graphql": "^0.4.0",
+    "express-handlebars": "^2.0.1",
     "graphiql": "^0.4.2",
     "graphql": "^0.4.9",
     "isomorphic-fetch": "^2.2.0",
