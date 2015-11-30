@@ -8,9 +8,11 @@ const rootType = new GraphQLObjectType({
   fields: () => ({
     test: {
       type: GraphQLString,
-      description: 'test'
-    }
+      description: 'test description',
+    },
   }),
 });
 
-module.exports = new GraphQLSchema({query: rootType});
+module.exports = new GraphQLSchema({
+  query: rootType,
+});
