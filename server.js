@@ -1,8 +1,17 @@
 const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./src/schema/schema');
-const exphbs  = require('express-handlebars');
+const exphbs = require('express-handlebars');
 const app = express();
+const manifest = require('./dist/stats.json');
+
+const makeScriptTags = ({ asset, hash }) => `${asset}.${hash}.js`;
+
+const assets = {
+  manifest: makeScriptTags(manifest.manifest),
+  vendor: makeScriptTags(manifest.vendor),
+  app: makeScriptTags(manifest.app),
+};
 
 app.engine('handlebars', exphbs());
 app.set('view engine', 'handlebars');
@@ -14,7 +23,7 @@ app.use('/graphql', graphqlHTTP(() => ({
 })));
 
 app.use('/', (req, res) => {
-  res.render('index');
+  res.render('index', assets);
 });
 
 app.listen(8080, () => {
