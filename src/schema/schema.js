@@ -1,14 +1,16 @@
 const graphql = require('graphql');
-const GraphQLObjectType = graphql.GraphQLObjectType;
-const GraphQLSchema = graphql.GraphQLSchema;
-const GraphQLString = graphql.GraphQLString;
+const {
+  GraphQLObjectType,
+  GraphQLSchema,
+} = graphql;
+const Listings = require('./listings');
 
 const rootType = new GraphQLObjectType({
   name: 'Root',
   fields: () => ({
-    test: {
-      type: GraphQLString,
-      description: 'test description',
+    listings: {
+      type: Listings,
+      description: 'Zoopla property listings',
       resolve: () => 'success !',
     },
   }),

@@ -7,7 +7,7 @@ const {
 
 module.exports = new GraphQLObjectType({
   name: 'Bounds',
-  description: 'A square area of latitude and longitude',
+  description: 'a square area of latitude and longitude',
   fields: () => ({
     minLongitude: {
       type: GraphQLFloat,

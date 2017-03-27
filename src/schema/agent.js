@@ -6,32 +6,32 @@ const {
 } = graphql;
 
 module.exports = new GraphQLObjectType({
-  name: 'Image',
-  description: 'details of an image of the property',
+  name: 'Agent',
+  description: 'details of the agent selling a property',
   fields: () => ({
     address: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'the address of the agent selling the property',
+      description: 'the address of the agent',
     },
     name: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'the name of the agent selling the property',
+      description: 'the name of the agent',
     },
     logo: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'the url to the logo of the agent selling the property',
+      description: 'the url to the logo of the agent',
     },
     phone: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'the phone number of the agent selling the property',
+      description: 'the phone number of the agent',
     },
     fees: {
       type: GraphQLString,

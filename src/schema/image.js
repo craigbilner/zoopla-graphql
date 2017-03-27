@@ -8,31 +8,31 @@ const {
 
 module.exports = new GraphQLObjectType({
   name: 'Image',
-  description: 'details of an image of the property',
+  description: 'details of an image of a property',
   fields: () => ({
     url: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'the url of the image',
+      description: 'the url of an image',
     },
     height: {
       type: GraphQLInt,
       resolve(){
       },
-      description: 'the height of the image',
+      description: 'the height of an image',
     },
     width: {
       type: GraphQLInt,
       resolve(){
       },
-      description: 'the width of the image',
+      description: 'the width of an image',
     },
     caption: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'a possible caption for the image',
+      description: 'a possible caption for an image',
     },
   }),
 });

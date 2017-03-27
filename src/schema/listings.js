@@ -12,7 +12,7 @@ const {
 
 module.exports = new GraphQLObjectType({
   name: 'Listings',
-  description: 'The area of search',
+  description: 'the area of search',
   fields: () => ({
     country: {
       type: GraphQLString,
@@ -38,7 +38,7 @@ module.exports = new GraphQLObjectType({
       },
       description: 'search term',
     },
-    listings: {
+    properties: {
       type: new GraphQLList(Listing),
       resolve(){
       },
