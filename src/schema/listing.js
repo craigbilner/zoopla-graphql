@@ -1,10 +1,10 @@
 const graphql = require('graphql');
 
 const {
-  GraphQLInt,
   GraphQLList,
   GraphQLObjectType,
   GraphQLString,
+  GraphQLID,
 } = graphql;
 const Price = require('./price');
 const Image = require('./image');
@@ -14,13 +14,15 @@ const Particulars = require('./particulars');
 const Status = require('./status');
 const Description = require('./description');
 const Timestamps = require('./timestamps');
+const CategoryEnum = require('./category-enum');
+const TypeEnum = require('./type-enum');
 
 module.exports = new GraphQLObjectType({
   name: 'Listing',
   description: 'details of a property',
   fields: () => ({
     id: {
-      type: GraphQLInt,
+      type: GraphQLID,
       resolve(){
       },
       description: 'the id of the property',
@@ -32,16 +34,16 @@ module.exports = new GraphQLObjectType({
       description: 'the status of the property',
     },
     category: {
-      type: GraphQLString,
+      type: CategoryEnum,
       resolve(){
       },
-      description: 'the category of the property: residential|commercial',
+      description: 'the category of the property',
     },
     type: {
-      type: GraphQLString,
+      type: TypeEnum,
       resolve(){
       },
-      description: 'the type of property: Detached house',
+      description: 'the type of property',
     },
     description: {
       type: Description,

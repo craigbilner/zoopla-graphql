@@ -7,16 +7,17 @@ const {
   GraphQLFloat,
 } = graphql;
 const GraphQLDate = require('graphql-date');
+const DirectionEnum = require('./direction-enum');
 
 module.exports = new GraphQLObjectType({
   name: 'PriceChange',
   description: 'the price change of a property',
   fields: () => ({
     direction: {
-      type: GraphQLString,
+      type: DirectionEnum,
       resolve(){
       },
-      description: 'the direction of the price change: up|down|empty',
+      description: 'the direction of the price change',
     },
     date: {
       type: GraphQLDate,

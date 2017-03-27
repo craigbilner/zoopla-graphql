@@ -4,22 +4,23 @@ const {
   GraphQLObjectType,
   GraphQLString,
 } = graphql;
+const StatusEnum = require('./status-enum');
 
 module.exports = new GraphQLObjectType({
   name: 'Status',
   description: 'the status of a listing',
   fields: () => ({
     type: {
-      type: GraphQLString,
+      type: StatusEnum,
       resolve(){
       },
-      description: 'the status type of the listing: sale|rent',
+      description: 'the status type of the listing',
     },
     description: {
       type: GraphQLString,
       resolve(){
       },
-      description: 'the status description of the listing: for_sale',
+      description: 'the status description of the listing',
     },
   }),
 });
