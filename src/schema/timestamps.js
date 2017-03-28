@@ -11,13 +11,15 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     published: {
       type: GraphQLDate,
-      resolve(){
+      resolve({ first_published_date }) {
+        return new Date(first_published_date);
       },
       description: 'the date a property was published',
     },
     updated: {
       type: GraphQLDate,
-      resolve(){
+      resolve({ last_published_date }) {
+        return new Date(last_published_date);
       },
       description: 'the date a property was last updated',
     },

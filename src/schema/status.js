@@ -12,13 +12,15 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     type: {
       type: StatusEnum,
-      resolve(){
+      resolve({ listing_status }) {
+        return listing_status;
       },
       description: 'the status type of the listing',
     },
     description: {
       type: GraphQLString,
-      resolve(){
+      resolve({ status }) {
+        return status;
       },
       description: 'the status description of the listing',
     },

@@ -19,13 +19,15 @@ app.use(express.static('dist'));
 
 app.use('/graphql', graphqlHTTP(() => ({
   schema,
-  graphiql: true,
+  graphiql: process.env.NODE_ENV === 'development',
 })));
 
 app.use('/', (req, res) => {
   res.render('index', assets);
 });
 
-app.listen(8080, () => {
+const PORT = process.env.PORT || 8080;
+
+app.listen(PORT, () => {
   console.log('running on 8080');
 });

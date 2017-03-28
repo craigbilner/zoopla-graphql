@@ -4,10 +4,10 @@ module.exports = new graphql.GraphQLEnumType({
   name: 'CategoryEnum',
   values: {
     COMMERCIAL: {
-      value: 'commercial',
+      value: 'Commercial',
     },
     RESIDENTIAL: {
-      value: 'residential',
+      value: 'Residential',
     },
   },
 });

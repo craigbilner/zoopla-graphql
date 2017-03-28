@@ -13,13 +13,15 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     current: {
       type: GraphQLFloat,
-      resolve(){
+      resolve({ price }) {
+        return parseFloat(price);
       },
       description: 'the price of the property',
     },
-    changes: {
+    history: {
       type: new GraphQLList(PriceChange),
-      resolve(){
+      resolve({ price_change }) {
+        return price_change;
       },
       description: 'the price history of a property',
     },

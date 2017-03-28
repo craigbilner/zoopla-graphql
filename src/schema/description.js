@@ -11,19 +11,22 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     short: {
       type: GraphQLString,
-      resolve(){
+      resolve({ short_description }) {
+        return short_description;
       },
       description: 'the short description of a property',
     },
     long: {
       type: GraphQLString,
-      resolve(){
+      resolve({ description }) {
+        return description;
       },
       description: 'the long description of a property',
     },
     url: {
       type: GraphQLString,
-      resolve(){
+      resolve({ details_url }) {
+        return details_url;
       },
       description: 'url to a property\'s details',
     },

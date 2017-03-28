@@ -6,7 +6,7 @@ module.exports = new graphql.GraphQLEnumType({
     TERRACED: { value: 'Terraced' },
     ENDOFTERRACE: { value: 'End of terrace' },
     SEMIDETACHED: { value: 'Semi-detached' },
-    DETACHED: { value: 'Detached' },
+    DETACHED: { value: 'Detached house' },
     MEWS: { value: 'Mews house' },
     FLAT: { value: 'Flat' },
     MAISONETTE: { value: 'Maisonette' },

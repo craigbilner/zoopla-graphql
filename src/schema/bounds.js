@@ -11,25 +11,29 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     minLongitude: {
       type: GraphQLFloat,
-      resolve(){
+      resolve({ longitude_min }) {
+        return parseFloat(longitude_min);
       },
       description: 'the minimum longitude',
     },
     maxLongitude: {
       type: GraphQLFloat,
-      resolve(){
+      resolve({ latitude_min }) {
+        return parseFloat(latitude_min);
       },
       description: 'the maximum longitude',
     },
     minLatitude: {
       type: GraphQLFloat,
-      resolve(){
+      resolve({ longitude_max }) {
+        return parseFloat(longitude_max);
       },
       description: 'the minimum latitude',
     },
     maxLatitude: {
       type: GraphQLFloat,
-      resolve(){
+      resolve({ latitude_max }) {
+        return parseFloat(latitude_max);
       },
       description: 'the maximum latitude',
     },

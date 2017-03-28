@@ -45,7 +45,7 @@
       "agent_logo": "https://st.zoocdn.com/zoopla_static_agent_logo_(58008).jpeg",
       "price_change": [
         {
-          "direction": "",
+          "direction": "up",
           "date": "2016-10-17 11:51:41",
           "percent": "0%",
           "price": "2080000"
@@ -550,8 +550,8 @@
       "last_published_date": "2017-02-16 01:10:12"
     }
   ],
-  "street": "",
-  "town": "",
+  "street": "street",
+  "town": "town",
   "latitude": 51.1519025,
   "county": "Kent",
   "bounding_box": {

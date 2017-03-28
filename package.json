@@ -4,7 +4,7 @@
   "description": "A GraphQL layer over the top of the zoopla API",
   "main": "index.js",
   "scripts": {
-    "start": "node server.js",
+    "start": "nodemon server.js",
     "lint": "eslint ./index.js ./server.js ./src",
     "build": "rm -rf dist && webpack"
   },
@@ -41,6 +41,7 @@
     "graphql": "^0.9.1",
     "graphql-date": "^1.0.3",
     "isomorphic-fetch": "^2.2.1",
+    "nodemon": "^1.11.0",
     "react": "^15.4.2",
     "react-dom": "^15.4.2",
     "webpack": "^2.3.2"

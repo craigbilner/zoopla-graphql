@@ -12,27 +12,23 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     url: {
       type: GraphQLString,
-      resolve(){
-      },
       description: 'the url of an image',
     },
     height: {
       type: GraphQLInt,
-      resolve(){
+      resolve({ name }) {
+        const [, , height] = name.split('_');
+        return parseInt(height, 10);
       },
       description: 'the height of an image',
     },
     width: {
       type: GraphQLInt,
-      resolve(){
+      resolve({ name }) {
+        const [, width] = name.split('_');
+        return parseInt(width, 10);
       },
       description: 'the width of an image',
-    },
-    caption: {
-      type: GraphQLString,
-      resolve(){
-      },
-      description: 'a possible caption for an image',
     },
   }),
 });

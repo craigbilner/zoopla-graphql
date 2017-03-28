@@ -1,9 +1,7 @@
 const graphql = require('graphql');
 
 const {
-  GraphQLInt,
   GraphQLObjectType,
-  GraphQLString,
   GraphQLFloat,
 } = graphql;
 const GraphQLDate = require('graphql-date');
@@ -15,25 +13,29 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     direction: {
       type: DirectionEnum,
-      resolve(){
+      resolve({ direction }) {
+        return direction;
       },
       description: 'the direction of the price change',
     },
     date: {
       type: GraphQLDate,
-      resolve(){
+      resolve({ date }) {
+        return new Date(date);
       },
       description: 'the date of the price change',
     },
     percent: {
-      type: GraphQLInt,
-      resolve(){
+      type: GraphQLFloat,
+      resolve({ percent }) {
+        return parseFloat(percent);
       },
       description: 'the percentage change',
     },
     price: {
       type: GraphQLFloat,
-      resolve(){
+      resolve({ price }) {
+        return parseFloat(price);
       },
       description: 'the new price',
     },
