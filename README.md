@@ -1,2 +1,3 @@
-# zoopla-graphql
-GraphQL layer over zoopla's API
+# Zoopla graphql
+
+GraphQL layer over Zoopla's API
