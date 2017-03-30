@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const graphql = require('graphql');
 
 const {

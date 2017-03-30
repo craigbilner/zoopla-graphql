@@ -18,4 +18,9 @@ const graphQLFetcher
   = graphQLParams => fetch(URL, fetchOpts(graphQLParams))
   .then(response => response.json());
 
-render(<GraphiQL fetcher={graphQLFetcher}/>, document.getElementById('main'));
+render(
+  <GraphiQL
+    fetcher={graphQLFetcher}
+  />,
+  document.getElementById('main'),
+);

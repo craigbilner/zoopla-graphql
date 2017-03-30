@@ -5,7 +5,7 @@ const ExtractTextPlugin = require("extract-text-webpack-plugin");
 module.exports = {
   devtool: 'source-map',
   entry: {
-    app: './index',
+    app: './index.jsx',
     vendor: ['react', 'react-dom', 'graphiql'],
   },
   output: {
@@ -15,7 +15,7 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.js$/,
+        test: /\.js|.jsx$/,
         exclude: /node_modules/,
         use: {
           loader: 'babel-loader',

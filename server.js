@@ -2,6 +2,7 @@ const express = require('express');
 const graphqlHTTP = require('express-graphql');
 const schema = require('./src/schema/schema');
 const exphbs = require('express-handlebars');
+
 const app = express();
 const manifest = require('./dist/stats.json');
 
@@ -29,5 +30,5 @@ app.use('/', (req, res) => {
 const PORT = process.env.PORT || 8080;
 
 app.listen(PORT, () => {
-  console.log('running on 8080');
+  console.log('running on 8080'); // eslint-disable-line no-console
 });

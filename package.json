@@ -2,10 +2,10 @@
   "name": "zoopla-graphql",
   "version": "0.0.1",
   "description": "A GraphQL layer over the top of the zoopla API",
-  "main": "index.js",
+  "main": "index.jsx",
   "scripts": {
     "start": "nodemon server.js",
-    "lint": "eslint ./index.js ./server.js ./src",
+    "lint": "eslint ./index.js ./server.js ./src/**/*.js",
     "build": "rm -rf dist && webpack"
   },
   "repository": {
@@ -47,5 +47,12 @@
     "request": "^2.81.0",
     "request-promise": "^4.2.0",
     "webpack": "^2.3.2"
+  },
+  "devDependencies": {
+    "eslint": "^3.18.0",
+    "eslint-config-airbnb": "^14.1.0",
+    "eslint-plugin-import": "^2.2.0",
+    "eslint-plugin-jsx-a11y": "^4.0.0",
+    "eslint-plugin-react": "^6.10.3"
   }
 }

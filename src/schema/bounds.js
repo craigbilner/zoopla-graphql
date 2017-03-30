@@ -2,7 +2,7 @@ const graphql = require('graphql');
 
 const {
   GraphQLObjectType,
-  GraphQLFloat
+  GraphQLFloat,
 } = graphql;
 
 module.exports = new GraphQLObjectType({

@@ -1,3 +1,5 @@
+/* eslint-disable camelcase */
+
 const graphql = require('graphql');
 
 const {
@@ -134,7 +136,7 @@ module.exports = new GraphQLObjectType({
           {
             name: 'image_354_255_url',
             url: image_354_255_url,
-          }
+          },
         ];
       },
       description: 'the images of the property',
@@ -163,7 +165,7 @@ module.exports = new GraphQLObjectType({
                 post_town,
                 outcode,
                 country,
-                country_code
+                country_code,
               }) {
         return {
           latitude,
@@ -174,7 +176,7 @@ module.exports = new GraphQLObjectType({
           post_town,
           outcode,
           country,
-          country_code
+          country_code,
         };
       },
       description: 'the location of the property',
@@ -190,7 +192,7 @@ module.exports = new GraphQLObjectType({
           floor_plan,
         };
       },
-      description: 'details of the rooms in the property'
+      description: 'details of the rooms in the property',
     },
   }),
 });
