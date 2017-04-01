@@ -69,10 +69,17 @@ module.exports = new GraphQLObjectType({
     },
     transport: {
       type: Transport,
-      resolve({ latitude, longitude }) {
+      args: {
+        radius: {
+          type: GraphQLFloat,
+          description: 'the radius in metres for which to search defaulted to 2km',
+        },
+      },
+      resolve({ latitude, longitude }, { radius }) {
         return {
           latitude,
           longitude,
+          radius,
         };
       },
     },

@@ -1,47 +1,14 @@
-/* eslint-disable prefer-template */
-
 const graphql = require('graphql');
 
 const {
   GraphQLObjectType,
   GraphQLList,
+  GraphQLInt,
 } = graphql;
 const TrainStation = require('./train-station');
-const request = require('request-promise');
+const { getNearbyStations, getWalkingDetails } = require('../helpers/data');
 
-const GM_NEARBY_URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
-const GM_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
-
-const toJSON = s => JSON.parse(s);
-
-const makeNearbyStationURL = (latitude, longitude, radius) =>
-GM_NEARBY_URL +
-'?location=' + latitude + ',' + longitude +
-'&radius=' + radius +
-'&type=train_station' +
-'&key=' + process.env.GM_NS_API_KEY;
-
-const makeStation = (oLat, oLong) => ({ geometry: { location: { lat, lng } }, name }) => ({
-  name,
-  oLat,
-  oLong,
-  lat,
-  lng,
-});
-
-const makeStations = (oLat, oLong) => ({ results }) => results.map(makeStation(oLat, oLong));
-
-const makeDestinations = ({ lat, lng }) =>
-  `${lat},${lng}`;
-
-const makeWalkingDistanceURL = (oLat, oLong, stations) =>
-GM_MATRIX_URL +
-'?origins=' + oLat + ',' + oLong +
-'&destinations=' + stations.map(makeDestinations).join('|') +
-'&mode=walking' +
-'&key=' + process.env.GM_DM_API_KEY;
-
-const mergeWalkingMetrics = details => (station, indx) => Object.assign({}, station, {
+const mergeWalkingMetric = details => (station, indx) => Object.assign({}, station, {
   gettingThere: {
     walking: {
       distance: details[indx].distance.value,
@@ -50,13 +17,19 @@ const mergeWalkingMetrics = details => (station, indx) => Object.assign({}, stat
   },
 });
 
-const applyWalkingDistancesToStations = stations => ({ rows: [{ elements }] }) =>
-  stations.map(mergeWalkingMetrics(elements));
+const mergeWalkingMetrics = ({ stations, walkingDetails }) =>
+  stations.map(mergeWalkingMetric(walkingDetails));
 
-const decorateWithGettingThere = (oLat, oLong) => stations =>
-  request(makeWalkingDistanceURL(oLat, oLong, stations))
-    .then(toJSON)
-    .then(applyWalkingDistancesToStations(stations));
+const byMaxWalkTime = maxWalkTime => ({ gettingThere: { walking: { time } } }) =>
+Math.ceil(time / 60) <= maxWalkTime;
+
+const filterStations = maxWalkTime => (stations) => {
+  if (!maxWalkTime) {
+    return stations;
+  }
+
+  return stations.filter(byMaxWalkTime(maxWalkTime));
+};
 
 module.exports = new GraphQLObjectType({
   name: 'Transport',
@@ -64,11 +37,17 @@ module.exports = new GraphQLObjectType({
   fields: () => ({
     trainStations: {
       type: new GraphQLList(TrainStation),
-      resolve({ latitude, longitude }, { radius = 2000 }) {
-        return request(makeNearbyStationURL(latitude, longitude, radius))
-          .then(toJSON)
-          .then(makeStations(latitude, longitude))
-          .then(decorateWithGettingThere(latitude, longitude));
+      args: {
+        maxWalkTime: {
+          type: GraphQLInt,
+          description: 'the maximum walking time in minutes',
+        },
+      },
+      resolve({ latitude, longitude, radius = 2000 }, { maxWalkTime }) {
+        return getNearbyStations(process.env.GM_NS_API_KEY, latitude, longitude, radius)
+          .then(getWalkingDetails(process.env.GM_DM_API_KEY, latitude, longitude))
+          .then(mergeWalkingMetrics)
+          .then(filterStations(maxWalkTime));
       },
       description: 'a list of station near the property defaulted to a radius of 2km',
     },

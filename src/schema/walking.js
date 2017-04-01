@@ -4,6 +4,7 @@ const {
   GraphQLObjectType,
   GraphQLFloat,
 } = graphql;
+const Time = require('./time');
 
 module.exports = new GraphQLObjectType({
   name: 'Walking',
@@ -13,7 +14,7 @@ module.exports = new GraphQLObjectType({
       type: GraphQLFloat,
     },
     time: {
-      type: GraphQLFloat,
+      type: Time,
     },
   }),
 });
