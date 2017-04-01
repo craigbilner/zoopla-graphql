@@ -43,9 +43,9 @@ module.exports = new GraphQLObjectType({
           description: 'the maximum walking time in minutes',
         },
       },
-      resolve({ latitude, longitude, radius = 2000 }, { maxWalkTime }) {
-        return getNearbyStations(process.env.GM_NS_API_KEY, latitude, longitude, radius)
-          .then(getWalkingDetails(process.env.GM_DM_API_KEY, latitude, longitude))
+      resolve({ latitude, longitude, radius = 2000 }, { maxWalkTime }, ctx) {
+        return getNearbyStations(ctx.GM_NS_API_KEY, latitude, longitude, radius)
+          .then(getWalkingDetails(ctx.GM_DM_API_KEY, latitude, longitude))
           .then(mergeWalkingMetrics)
           .then(filterStations(maxWalkTime));
       },

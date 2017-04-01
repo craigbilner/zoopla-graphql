@@ -21,6 +21,11 @@ app.use(express.static('dist'));
 app.use('/graphql', graphqlHTTP(() => ({
   schema,
   graphiql: process.env.NODE_ENV === 'development',
+  context: {
+    ZOOPLA_API_KEY: process.env.ZOOPLA_API_KEY,
+    GM_NS_API_KEY: process.env.GM_NS_API_KEY,
+    GM_DM_API_KEY: process.env.GM_DM_API_KEY,
+  },
 })));
 
 app.use('/', (req, res) => {

@@ -13,86 +13,7 @@ const Listings = require('./listings');
 const StatusEnum = require('./status-enum');
 const TypeEnum = require('./type-enum');
 const FurnishingEnum = require('./furnishing-enum');
-const request = require('request-promise');
-// const data = require('../../fixtures/pl-tw');
-
-const LISTINGS = 'http://api.zoopla.co.uk/api/v1/property_listings.json';
-const identity = x => x;
-const boolToBit = val => val >> 0;
-const paramKeys = new Map([
-  ['area', {
-    key: 'area',
-    transform: identity,
-  }],
-  ['status', {
-    key: 'listing_status',
-    transform: identity,
-  }],
-  ['includeSold', {
-    key: 'include_sold',
-    transform: boolToBit,
-  }],
-  ['includeRented', {
-    key: 'include_rented',
-    transform: boolToBit,
-  }],
-  ['minPrice', {
-    key: 'minimum_price',
-    transform: identity,
-  }],
-  ['maxPrice', {
-    key: 'maximum_price',
-    transform: identity,
-  }],
-  ['minBeds', {
-    key: 'minimum_beds',
-    transform: identity,
-  }],
-  ['maxBeds', {
-    key: 'maximum_beds',
-    transform: identity,
-  }],
-  ['furnishings', {
-    key: 'furnished',
-    transform: identity,
-  }],
-  ['type', {
-    key: 'property_type',
-    transform: identity,
-  }],
-  ['isNew', {
-    key: 'new_homes',
-    transform: identity,
-  }],
-  ['isChainFree', {
-    key: 'chain_free',
-    transform: identity,
-  }],
-  ['keywords', {
-    key: 'keywords',
-    transform: identity,
-  }],
-  ['listingId', {
-    key: 'listing_id',
-    transform: identity,
-  }],
-  ['branchId', {
-    key: 'branch_id',
-    transform: identity,
-  }],
-  ['pageNumber', {
-    key: 'page_number',
-    transform: identity,
-  }],
-  ['pageSize', {
-    key: 'page_size',
-    transform: identity,
-  }],
-  ['isSummarised', {
-    key: 'summarised',
-    transform: identity,
-  }],
-]);
+const { getPropertyList } = require('../helpers/data');
 
 const rootType = new GraphQLObjectType({
   name: 'Root',
@@ -174,20 +95,8 @@ const rootType = new GraphQLObjectType({
           description: 'show a cut down version of the property details',
         },
       },
-      resolve: (post, args) => {
-        console.log(args); // eslint-disable-line no-console
-        const params = Object.keys(args).reduce((ps, key) => {
-          const mapping = paramKeys.get(key);
-
-          if (mapping) {
-            ps.push(`${mapping.key}=${mapping.transform(args[key])}`);
-          }
-
-          return ps;
-        }, []);
-
-        return request(`${LISTINGS}?api_key=${process.env.ZOOPLA_API_KEY}&${params.join('&')}`)
-          .then(res => JSON.parse(res));
+      resolve(post, args, ctx) {
+        return getPropertyList(ctx.ZOOPLA_API_KEY, args);
       },
     },
   }),
