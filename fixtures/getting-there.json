@@ -1,0 +1,98 @@
+{
+  "destination_addresses": [
+    "55 Exmouth Rd, Walthamstow, London E17, UK",
+    "17490 Selborne Rd, Walthamstow, London E17 7LP, UK",
+    "160A Midland Rd, London E10 6JT, UK",
+    "12-14 A503, Walthamstow, London E17 6JJ, UK",
+    "2 Courtenay Pl, Walthamstow, London E17 7PJ, UK",
+    "1 Upper Walthamstow Rd, Walthamstow, London E17, UK",
+    "Argall Way, Walthamstow, London E10, UK"
+  ],
+  "origin_addresses": [
+    "11-13 Lorne Rd, Walthamstow, London E17, UK"
+  ],
+  "rows": [
+    {
+      "elements": [
+        {
+          "distance": {
+            "text": "0.3 km",
+            "value": 271
+          },
+          "duration": {
+            "text": "3 mins",
+            "value": 204
+          },
+          "status": "OK"
+        },
+        {
+          "distance": {
+            "text": "0.7 km",
+            "value": 654
+          },
+          "duration": {
+            "text": "9 mins",
+            "value": 517
+          },
+          "status": "OK"
+        },
+        {
+          "distance": {
+            "text": "1.9 km",
+            "value": 1859
+          },
+          "duration": {
+            "text": "23 mins",
+            "value": 1393
+          },
+          "status": "OK"
+        },
+        {
+          "distance": {
+            "text": "2.1 km",
+            "value": 2082
+          },
+          "duration": {
+            "text": "25 mins",
+            "value": 1527
+          },
+          "status": "OK"
+        },
+        {
+          "distance": {
+            "text": "1.1 km",
+            "value": 1099
+          },
+          "duration": {
+            "text": "13 mins",
+            "value": 801
+          },
+          "status": "OK"
+        },
+        {
+          "distance": {
+            "text": "1.8 km",
+            "value": 1813
+          },
+          "duration": {
+            "text": "23 mins",
+            "value": 1374
+          },
+          "status": "OK"
+        },
+        {
+          "distance": {
+            "text": "2.4 km",
+            "value": 2409
+          },
+          "duration": {
+            "text": "30 mins",
+            "value": 1778
+          },
+          "status": "OK"
+        }
+      ]
+    }
+  ],
+  "status": "OK"
+}

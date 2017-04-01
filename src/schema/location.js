@@ -7,6 +7,7 @@ const {
   GraphQLString,
   GraphQLFloat,
 } = graphql;
+const Transport = require('./transport');
 
 module.exports = new GraphQLObjectType({
   name: 'Location',
@@ -65,6 +66,15 @@ module.exports = new GraphQLObjectType({
         return country_code;
       },
       description: 'the country code of the country the property is in',
+    },
+    transport: {
+      type: Transport,
+      resolve({ latitude, longitude }) {
+        return {
+          latitude,
+          longitude,
+        };
+      },
     },
   }),
 });

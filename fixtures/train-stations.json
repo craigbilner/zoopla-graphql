@@ -1,0 +1,217 @@
+{
+  "html_attributions": [],
+  "results": [
+    {
+      "geometry": {
+        "location": {
+          "lat": 51.5830128,
+          "lng": -0.019886
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 51.5843617802915,
+            "lng": -0.01853701970849797
+          },
+          "southwest": {
+            "lat": 51.5816638197085,
+            "lng": -0.02123498029150203
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/generic_business-71.png",
+      "id": "0984f07d80988266f45ee675900097eeaeb66653",
+      "name": "Walthamstow Central",
+      "photos": [
+        {
+          "height": 2900,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/105397465056626544827/photos\"\u003eChristiano Takatsch\u003c/a\u003e"
+          ],
+          "photo_reference": "CoQBdwAAAJzK6zsz0azV6IikEpovNaEVop92GsWKYAo7bYweeXwvLr2ShJJlaymFtZDIWJ4vdJF-9mTTRs9RhJxsAVH8xoo2wWBdkOPxqHPJPNzN6trlfw64IBYyGYAdKMJqluBb2q8gNtZCAzVVg0XHvepAtruBwXPfRejIStCfVIVYW_s5EhCLIjT4deeqXPydp8iUY46KGhQ109kacLtmz8PMDo0Lu6T6gshrew",
+          "width": 3873
+        }
+      ],
+      "place_id": "ChIJkbah0OsddkgRiLcLdwwC86s",
+      "rating": 4.1,
+      "reference": "CmRSAAAAosBfHtAroQ-EHow7UzeKdvQQA9c7bYf77VawOCWmtlkEtVqLIxqQ-7cPwaDAIOY10P3Sn1-5aKz87kFGIyxUPBRY11AV3950uKv8FrvLtU9nphG4FJs8zdMOSSIfo990EhA0a6eldUBXfWdYaxnWRq1sGhS9jhXcK_1R15jp54zovCL0-WB42w",
+      "scope": "GOOGLE",
+      "types": [
+        "transit_station",
+        "subway_station",
+        "train_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "Walthamstow Central Station BR Hoe St, London"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 51.5815,
+          "lng": -0.02382
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 51.5828489802915,
+            "lng": -0.02247101970849797
+          },
+          "southwest": {
+            "lat": 51.5801510197085,
+            "lng": -0.02516898029150203
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/train-71.png",
+      "id": "1c90b9c3da1135ae349b81463fea52e5a0ccd5ba",
+      "name": "Walthamstow Queens Road",
+      "photos": [
+        {
+          "height": 2448,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/107072940560249423360/photos\"\u003eStephen Kassay\u003c/a\u003e"
+          ],
+          "photo_reference": "CoQBdwAAAN8b2aOM0oUW2xegqjUdPhVC0VM2AoS4dzQ337OvogHhQ9vncckfy5qvAS7g4V_NFYYgPVmmu-LljyXI7HDvBAz_2H1e73CHZu3v5XFoUACctX_ayqsfe8bHWIFRDtysm8XAI5SKtO0ae4ybRedYosud41Jzic8n8jls9TvpdrFlEhA4nBMvyk9NaHbf5HggaQK-GhRm_5KhmA18JEzN3ntZm1daTIHb0A",
+          "width": 3264
+        }
+      ],
+      "place_id": "ChIJsQOU2cEddkgRuAcQiugoQHg",
+      "rating": 3.2,
+      "reference": "CmRRAAAAKOq5YKyrfShMhetJdyenAMQeQIJbSWV9VwAPAM_cDG873SR-ZigKpdT8TARrtoUZz49YS6fu5iK7JoVExjptGFIUyer4EWp4EO2NRi91fsQILNPC_Jo5WK9Np6mf-OJAEhAd6BRTSurui27Ho9pOhPYEGhSSVB8nOul37r2YibCPy4ZPF-jUVA",
+      "scope": "GOOGLE",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "United Kingdom"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 51.586564,
+          "lng": -0.041515
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 51.5881940802915,
+            "lng": -0.04009386970849796
+          },
+          "southwest": {
+            "lat": 51.5854961197085,
+            "lng": -0.04279183029150203
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/train-71.png",
+      "id": "82575598deb1bf28ba82ebc7dd8ef7c953f4adef",
+      "name": "Blackhorse Road",
+      "photos": [
+        {
+          "height": 1836,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/110175263085663438221/photos\"\u003eInfoexpert X\u003c/a\u003e"
+          ],
+          "photo_reference": "CoQBdwAAAFKH81MKYnzJ8_anZirXoRS8955i4YYv9e4FhcFCrc0DIMoFF6NBvWaswZ1Fz3pTKEtKHA-wTUZNNl-fJcB7WkfyL7aKXcWFtm9LsIKNKYdMZuWuCJ_LwtVHxfu5Lh9Qn7iLocbMiFHq9klxmfZePWHQU9yVC3O3S8uWxW7yGr6WEhCWO2tGFYTtkR_tSsxvhgW3GhQvWKCGcJt_5r0VI9q2BYnc8i3drQ",
+          "width": 3264
+        }
+      ],
+      "place_id": "ChIJB1rk180ddkgR1muq0GnnmBM",
+      "rating": 3,
+      "reference": "CmRRAAAArr9ONLsLJ47aeBwxtQzX4ItJD83OHrKeePwGczzxlDaok4X8aqIPo7bB6vf5w-NZwHrBPUntalWBJlTaGRSkGDw7lGliTEEDKyecssnvVQEcID8jwoEZF_ATuWTPI_JLEhCddbEbYC4e5mDyiA40OQNyGhTXRFzbT-NNPVn2TR-7OlB3hD9kUg",
+      "scope": "GOOGLE",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "United Kingdom"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 51.58658,
+          "lng": -0.002379999999999999
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 51.58792898029149,
+            "lng": -0.001031019708497969
+          },
+          "southwest": {
+            "lat": 51.5852310197085,
+            "lng": -0.00372898029150203
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/train-71.png",
+      "id": "d7aeb2560c485132746ff5d45d2a2123e059f398",
+      "name": "Wood Street",
+      "photos": [
+        {
+          "height": 3024,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/111900059173729878102/photos\"\u003efrank\u003c/a\u003e"
+          ],
+          "photo_reference": "CoQBdwAAAEmxHVEkld7ZycDOUtCmgShzw2cdXES2BN7MCOlDFXjRH3foSrDmyGy9r3xPbw4SpnQOy3RY48II6d__LMeS3MrdUl6cPy7E6f7nfCgOzhqCDFEN_-xLP5muMBEFnC9zyp2uJwlbGZg2W1Am2WYgs4Jhe5L6QcvJfN0W8XAN-cZTEhDU36c6RIOBJPfiBtCyrTVtGhS8FQMLhmn7VwKBn2_LnEhX14G5zg",
+          "width": 4032
+        }
+      ],
+      "place_id": "ChIJQzKgr_cddkgR1rvYMOLInUs",
+      "rating": 3.9,
+      "reference": "CmRRAAAAiOhv9NMw_QRiTck_A93tiPfcC3QXgYTceNpPAnpwZAUQ8ZAY1ggIh3xjSnW2S59PAIS5jEdft0OgWIQDrJ7XNd_7HJiRWWEy4h6Bpj6TwLZcL1Ul7cd0_gzw54KdynvjEhApIBrqu3j46LbQDFwWpEyiGhT0U4FnUASlr24gNcjDw5pPlwjeAQ",
+      "scope": "GOOGLE",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "United Kingdom"
+    },
+    {
+      "geometry": {
+        "location": {
+          "lat": 51.58098,
+          "lng": -0.03289
+        },
+        "viewport": {
+          "northeast": {
+            "lat": 51.5823289802915,
+            "lng": -0.03154101970849797
+          },
+          "southwest": {
+            "lat": 51.5796310197085,
+            "lng": -0.03423898029150203
+          }
+        }
+      },
+      "icon": "https://maps.gstatic.com/mapfiles/place_api/icons/train-71.png",
+      "id": "fbe936de7929893028d41bb29d97100c92186228",
+      "name": "St James Street",
+      "photos": [
+        {
+          "height": 1448,
+          "html_attributions": [
+            "\u003ca href=\"https://maps.google.com/maps/contrib/109648577636572315039/photos\"\u003eL Hill\u003c/a\u003e"
+          ],
+          "photo_reference": "CoQBdwAAAOqyQ93c_UPqEYGpP6V1aFqzlKVvugYNsjSdVH45ddLmAH6y1vYC-LoOF3ZyQlQzEglrBsKyCev-CBlsXupq0__19cDNXA-1YDOwCD000iu7l-Pbf8IVHWuMEHnZMAzIPtg5oykmdnYIBZNP5QpM1bZcST218hSZG-ZI8b9KnUh6EhBHG9LCVNaas1PNNAsAO-PZGhTmBKlB_X-DDHpzgTWu0bLsLnu8fA",
+          "width": 5008
+        }
+      ],
+      "place_id": "ChIJMRi1U8YddkgRp3QAAXQ7Cv8",
+      "rating": 3.6,
+      "reference": "CmRSAAAAsN5pHL9S-iBR2m16gp0CFK51JlFmti0cdeW4rQ85jbzc5YFepPZ8KYefmpiIdYV8wXJtiR6q47RSgPrMNBEhtOwIhr6wQ7NTG7ZhE0em9O22YIf_eFAo3Zy_vwhWnH4PEhC6gM3ZHekLwxL6Ujo_Jug3GhS-3cUNk8PDxL8iMiHRUiBSnGTBqA",
+      "scope": "GOOGLE",
+      "types": [
+        "train_station",
+        "transit_station",
+        "point_of_interest",
+        "establishment"
+      ],
+      "vicinity": "United Kingdom"
+    }
+  ],
+  "status": "OK"
+}

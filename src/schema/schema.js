@@ -186,7 +186,7 @@ const rootType = new GraphQLObjectType({
           return ps;
         }, []);
 
-        return request(`${LISTINGS}?api_key=${process.env.API_KEY}&${params.join('&')}`)
+        return request(`${LISTINGS}?api_key=${process.env.ZOOPLA_API_KEY}&${params.join('&')}`)
           .then(res => JSON.parse(res));
       },
     },
