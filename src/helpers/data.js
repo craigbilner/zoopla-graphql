@@ -1,13 +1,40 @@
 /* eslint-disable prefer-template */
 
 const request = require('request-promise');
-
-const toJSON = s => JSON.parse(s);
+const { get, set } = require('./redis');
+const { identity, boolToBit, toJSON } = require('./utils');
 
 const LISTINGS = 'http://api.zoopla.co.uk/api/v1/property_listings.json';
+const GM_NEARBY_URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
+const GM_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
 
-const identity = x => x;
-const boolToBit = val => val >> 0;
+const makeNearbyStationURL = (key, latitude, longitude, radius) =>
+GM_NEARBY_URL +
+'?location=' + latitude + ',' + longitude +
+'&radius=' + radius +
+'&type=train_station' +
+'&key=' + key;
+
+const makeDestinations = ({ lat, lng }) =>
+  `${lat},${lng}`;
+
+const makeWalkingDistanceURL = (key, oLat, oLong, stations) =>
+GM_MATRIX_URL +
+'?origins=' + oLat + ',' + oLong +
+'&destinations=' + stations.map(makeDestinations).join('|') +
+'&mode=walking' +
+'&key=' + key;
+
+const fetchData = url => get(url)
+  .then((value) => {
+    if (!value) {
+      return request(url)
+        .then(set(url));
+    }
+
+    return value;
+  })
+  .then(toJSON);
 
 const paramKeys = new Map([
   ['area', {
@@ -94,19 +121,6 @@ const makeParams = args => Object.keys(args).reduce((ps, key) => {
   return ps;
 }, []);
 
-const getPropertyList = (key, args) =>
-  request(`${LISTINGS}?api_key=${key}&${makeParams(args).join('&')}`)
-    .then(toJSON);
-
-const GM_NEARBY_URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
-
-const makeNearbyStationURL = (key, latitude, longitude, radius) =>
-GM_NEARBY_URL +
-'?location=' + latitude + ',' + longitude +
-'&radius=' + radius +
-'&type=train_station' +
-'&key=' + key;
-
 const makeStation = (oLat, oLong) => ({ geometry: { location: { lat, lng } }, name }) => ({
   name,
   oLat,
@@ -117,31 +131,20 @@ const makeStation = (oLat, oLong) => ({ geometry: { location: { lat, lng } }, na
 
 const makeStations = (oLat, oLong) => ({ results }) => results.map(makeStation(oLat, oLong));
 
-const getNearbyStations = (key, latitude, longitude, radius) =>
-  request(makeNearbyStationURL(key, latitude, longitude, radius))
-    .then(toJSON)
-    .then(makeStations(latitude, longitude));
-
-const GM_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
-
-const makeDestinations = ({ lat, lng }) =>
-  `${lat},${lng}`;
-
-const makeWalkingDistanceURL = (key, oLat, oLong, stations) =>
-GM_MATRIX_URL +
-'?origins=' + oLat + ',' + oLong +
-'&destinations=' + stations.map(makeDestinations).join('|') +
-'&mode=walking' +
-'&key=' + key;
-
 const mapStations = stations => ({ rows: [{ elements }] }) => ({
   stations,
   walkingDetails: elements,
 });
 
+const getPropertyList = (key, args) =>
+  fetchData(`${LISTINGS}?api_key=${key}&${makeParams(args).join('&')}`);
+
+const getNearbyStations = (key, latitude, longitude, radius) =>
+  fetchData(makeNearbyStationURL(key, latitude, longitude, radius))
+    .then(makeStations(latitude, longitude));
+
 const getWalkingDetails = (key, latitude, longitude) => stations =>
-  request(makeWalkingDistanceURL(key, latitude, longitude, stations))
-    .then(toJSON)
+  fetchData(makeWalkingDistanceURL(key, latitude, longitude, stations))
     .then(mapStations(stations));
 
 module.exports.getPropertyList = getPropertyList;
