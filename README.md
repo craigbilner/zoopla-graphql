@@ -4,16 +4,16 @@ GraphQL layer over Zoopla's and Google's Maps APIs
 
 ## What it does
 
-Easily search the Zoopla database for property listings and only
+Easily search the Zoopla database for property listings, and only
 pick out the bits you're interested in for your interface. On top
-of that you can find the walking distance to station within the
-vicinity AND THEN how long it will take to commute from those said
+of that you can find the walking distance to a station within the
+vicinity, AND THEN how long it will take to commute from those said
 stations to a destination of your choice 🚶‍️🏡🚂😊
 
 ## Examples
 
 Example query:
-```
+```graphql
 {
   listings(area: "walthamstow", status:SALE) {
     count
@@ -54,7 +54,7 @@ Example query:
 
 Example response:
 
-```
+```json
 {
   "data": {
     "listings": {
