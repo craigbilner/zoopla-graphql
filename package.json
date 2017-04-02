@@ -6,7 +6,7 @@
   "scripts": {
     "start:dev": "nodemon server.js",
     "start": "node server.js",
-    "lint": "eslint ./index.js ./server.js ./src/**/*.js",
+    "lint": "eslint ./server.js ./src/**/*.js",
     "build": "rm -rf dist && webpack"
   },
   "repository": {
@@ -26,35 +26,22 @@
   },
   "homepage": "https://github.com/craigbilner/zoopla-graphql#readme",
   "dependencies": {
-    "babel-cli": "^6.24.0",
-    "babel-core": "^6.24.0",
-    "babel-loader": "^6.4.1",
-    "babel-preset-babili": "^0.0.12",
-    "babel-preset-env": "^1.2.2",
-    "babel-preset-react": "^6.23.0",
-    "babili": "^0.0.12",
-    "css-loader": "^0.27.3",
     "express": "^4.15.2",
     "express-graphql": "^0.6.3",
-    "express-handlebars": "^3.0.0",
-    "extract-text-webpack-plugin": "^2.1.0",
-    "graphiql": "^0.9.3",
     "graphql": "^0.9.1",
     "graphql-date": "^1.0.3",
-    "isomorphic-fetch": "^2.2.1",
-    "nodemon": "^1.11.0",
-    "react": "^15.4.2",
-    "react-dom": "^15.4.2",
+    "helmet": "^3.5.0",
     "redis": "^2.7.1",
     "request": "^2.81.0",
-    "request-promise": "^4.2.0",
-    "webpack": "^2.3.2"
+    "request-promise": "^4.2.0"
   },
   "devDependencies": {
     "eslint": "^3.18.0",
     "eslint-config-airbnb": "^14.1.0",
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^4.0.0",
-    "eslint-plugin-react": "^6.10.3"
+    "eslint-plugin-react": "^6.10.3",
+    "graphiql": "^0.9.3",
+    "nodemon": "^1.11.0"
   }
 }
