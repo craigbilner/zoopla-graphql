@@ -4,7 +4,7 @@ const {
   GraphQLObjectType,
   GraphQLFloat,
 } = graphql;
-const Walking = require('./walking');
+const TravelDetails = require('./travel-details');
 
 module.exports = new GraphQLObjectType({
   name: 'GettingThere',
@@ -27,7 +27,7 @@ module.exports = new GraphQLObjectType({
       description: 'the longitude of the destination',
     },
     walking: {
-      type: Walking,
+      type: TravelDetails,
       description: 'the walking details of getting from the origin to the destination',
     },
   }),

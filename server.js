@@ -25,6 +25,7 @@ app.use('/graphql', graphqlHTTP(() => ({
     ZOOPLA_API_KEY: process.env.ZOOPLA_API_KEY,
     GM_NS_API_KEY: process.env.GM_NS_API_KEY,
     GM_DM_API_KEY: process.env.GM_DM_API_KEY,
+    GM_D_API_KEY: process.env.GM_D_API_KEY,
   },
 })));
 

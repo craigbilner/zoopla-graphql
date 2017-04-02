@@ -4,7 +4,8 @@
   "description": "A GraphQL layer over the top of the zoopla API",
   "main": "index.jsx",
   "scripts": {
-    "start": "nodemon server.js",
+    "start:dev": "nodemon server.js",
+    "start": "node server.js",
     "lint": "eslint ./index.js ./server.js ./src/**/*.js",
     "build": "rm -rf dist && webpack"
   },

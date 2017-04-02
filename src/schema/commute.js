@@ -2,19 +2,20 @@ const graphql = require('graphql');
 
 const {
   GraphQLObjectType,
-  GraphQLFloat,
+  GraphQLList,
 } = graphql;
+const TravelStep = require('./travel-step');
 const Time = require('./time');
 
 module.exports = new GraphQLObjectType({
-  name: 'Walking',
-  description: 'details of the distance and time to get from one lat and long to another while walking',
+  name: 'Commute',
+  description: 'details of a commute from one station to another',
   fields: () => ({
-    distance: {
-      type: GraphQLFloat,
-    },
     time: {
       type: Time,
+    },
+    steps: {
+      type: new GraphQLList(TravelStep),
     },
   }),
 });

@@ -1,4 +1,4 @@
-/* eslint-disable prefer-template */
+/* eslint-disable prefer-template, camelcase */
 
 const request = require('request-promise');
 const { get, set } = require('./redis');
@@ -7,6 +7,7 @@ const { identity, boolToBit, toJSON } = require('./utils');
 const LISTINGS = 'http://api.zoopla.co.uk/api/v1/property_listings.json';
 const GM_NEARBY_URL = 'https://maps.googleapis.com/maps/api/place/nearbysearch/json';
 const GM_MATRIX_URL = 'https://maps.googleapis.com/maps/api/distancematrix/json';
+const GM_DIRECTIONS_URL = 'https://maps.googleapis.com/maps/api/directions/json';
 
 const makeNearbyStationURL = (key, latitude, longitude, radius) =>
 GM_NEARBY_URL +
@@ -23,6 +24,13 @@ GM_MATRIX_URL +
 '?origins=' + oLat + ',' + oLong +
 '&destinations=' + stations.map(makeDestinations).join('|') +
 '&mode=walking' +
+'&key=' + key;
+
+const makeCommuteURL = (key, latitude, longitude, destination) =>
+GM_DIRECTIONS_URL +
+'?origin=' + latitude + ',' + longitude +
+'&destination=' + destination +
+'&mode=transit' +
 '&key=' + key;
 
 const fetchData = url => get(url)
@@ -136,6 +144,50 @@ const mapStations = stations => ({ rows: [{ elements }] }) => ({
   walkingDetails: elements,
 });
 
+const makeStep = ({ duration, html_instructions, travel_mode, transit_details }) => {
+  const step = {
+    time: duration.value,
+    description: html_instructions,
+    mode: travel_mode,
+  };
+
+  if (travel_mode === 'TRANSIT') {
+    const {
+      departure_stop,
+      arrival_stop,
+      line: {
+        short_name,
+        vehicle: {
+          local_icon,
+        },
+      },
+    } = transit_details;
+
+    Object.assign(step, {
+      details: {
+        origin: departure_stop.name,
+        destination: arrival_stop.name,
+        type: short_name,
+        icon: local_icon,
+      },
+    });
+  }
+
+  return step;
+};
+
+const makeRoutes = ({ routes: [{ legs: [leg] }] }) => {
+  const {
+    duration,
+    steps,
+  } = leg;
+
+  return {
+    time: duration.value,
+    steps: steps.map(makeStep),
+  };
+};
+
 const getPropertyList = (key, args) =>
   fetchData(`${LISTINGS}?api_key=${key}&${makeParams(args).join('&')}`);
 
@@ -147,6 +199,11 @@ const getWalkingDetails = (key, latitude, longitude) => stations =>
   fetchData(makeWalkingDistanceURL(key, latitude, longitude, stations))
     .then(mapStations(stations));
 
+const getCommuteDetails = (key, latitude, longitude, destination) =>
+  fetchData(makeCommuteURL(key, latitude, longitude, destination))
+    .then(makeRoutes);
+
 module.exports.getPropertyList = getPropertyList;
 module.exports.getNearbyStations = getNearbyStations;
 module.exports.getWalkingDetails = getWalkingDetails;
+module.exports.getCommuteDetails = getCommuteDetails;
