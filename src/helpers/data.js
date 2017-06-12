@@ -42,7 +42,11 @@ const fetchData = url => get(url)
 
     return value;
   })
-  .then(toJSON);
+  .then(toJSON)
+  .catch(e => {
+    console.log(e);
+    return e;
+  });
 
 const paramKeys = new Map([
   ['area', {
